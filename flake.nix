@@ -33,6 +33,8 @@
           ]);
 
           environment.systemPackages = with pkgs; [
+            gnome.gnome-settings-daemon
+            gnome.gnome-session
             gnome.gnome-tweaks
           ];
 
