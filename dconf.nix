@@ -1,28 +1,20 @@
 { config, lib, pkgs, ... }:
+
 {
   dconf.settings = {
-      "org/gnome/desktop/wm/preferences" = {
-        audible-bell = false;
-      };
-
-      "org/gnome/shell" = {
-        disable-user-extensions = false;
-
-        enabled-extensions = [
-          "pop-shell@system76.com"
-        ];
-      };
-
-      "org/gnome/shell/keybindings" = {
-        focus-active-notification = [];
-        screenshot = [];
+      "org/gnome/applications/terminal" = {
+        exec = "kitty";
       };
 
       "org/gnome/desktop/wm/keybindings" = {
         activate-window-menu = [ "<Super>space" ];
+        minimize = [];
+        unmaximized = [];
+        maximized = [];
+        toggle-maximized = [ "<Super>m" ];
         begin-move = [];
         begin-resize = [];
-        close = [ "<Super>q" "<Alt>F4" ];
+        close = [ "<Super>q" ];
         cycle-group = [];
         cycle-group-backward = [];
         cycle-panels = [];
@@ -50,6 +42,48 @@
         switch-to-workspace-last = [ "<Shift><Super>l" ];
       };
 
+      "org/gnome/desktop/wm/preferences" = {
+        audible-bell = false;
+        auto-raise = true;
+      };
+
+      "org/gnome/mutter" = {
+        edge-tiling = false;
+        overlay-key = "Super_R";
+        workspaces-only-on-primary = false;
+      };
+
+      "org/gnome/mutter/keybindings" = {
+        toggle-tiled-left = [];
+        toggle-tiled-right = [];
+      };
+
+      "org/gnome/mutter/wayland/keybindings" = {
+        restore-shortcuts = [];
+      };
+
+      "org/gnome/shell" = {
+        remember-mount-password = true;
+
+        disable-user-extensions = false;
+        enabled-extensions = [
+          "pop-shell@system76.com"
+        ];
+      };
+
+      "org/gnome/shell/keybindings" = {
+        focus-active-notification = [];
+        screenshot = [];
+        screenshot-window = [];
+        show-screen-recording-ui = [ "<Shift><Control><Super>r" ];
+        show-screenshot-ui = [ "<Shift><Control><Super>p" ];
+        toggle-application-view = [];
+        toggle-quick-settings = [];
+        toggle-overview = [ "<Super>a" ];
+        toggle-message-tray = [ "<Super>v" ];
+      };
+
+
       "org/gnome/shell/extensions/pop-shell" = {
         activate-launcher = [ "<Super>d" ];
         activate-hint = true;
@@ -66,6 +100,26 @@
         snap-to-grid = false;
         tile-by-default = true;
         tile-enter = [ "<Super>e" ];
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+        email = [];
+        home = [ "<Super>f" ];
+        www = [ "<Super>b" ];
+        help = [];
+        logout = [ "<Shift><Control><Super>e"];
+        magnifier = [];
+        magnifier-zoom-in = [];
+        magnifier-zoom-out = [];
+        screenreader = [];
+        screensaver = [ "<Shift><Control><Super>l" ];
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        name = "Terminal";
+        binding = "<Super>t";
+        command = "kitty";
       };
     };
 }
