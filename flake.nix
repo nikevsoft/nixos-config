@@ -41,6 +41,11 @@
           programs.dconf.enable = true;
         };
 
+        ssh = { pkgs, ... }: {
+          # https://github.com/NixOS/nixpkgs/issues/24311
+          programs.ssh.askPassword = "";
+        };
+
       };
 
       nixosConfigurations = {
@@ -49,6 +54,7 @@
           modules = with self.nixosModules; [ 
             ./configuration.nix 
             gnome 
+            ssh
           ];
         };
       };
