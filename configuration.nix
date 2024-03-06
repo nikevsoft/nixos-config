@@ -18,10 +18,12 @@
         efiSysMountPoint = "/boot";
       };
 
+      systemd-boot.enable = false;
+
       grub = {
         enable = true;
         devices = [ "nodev" ];
-	default = "saved";
+        default = "saved";
         efiSupport = true;
         useOSProber = true;
       };
@@ -43,7 +45,7 @@
 
       powerManagement = {
         enable = false;
-	finegrained = false;
+        finegrained = false;
       };
 
       open = false;
